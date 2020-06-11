@@ -2,7 +2,7 @@
 
 set -o pipefail
 
-VERSION="9.40"
+VERSION="11.99"
 BIN_DIR=$(dirname $0)
 ROOT_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILD_DIR=$1
@@ -13,7 +13,7 @@ APP_DIR=/app
 echo "-----> Installing exiftool-$VERSION"
 mkdir -p $BUILD_DIR $BUILD_DIR/.profile.d $CACHE_DIR $TARGET_DIR
 cd $TARGET_DIR
-curl --fail --retry 3 --retry-delay 1 --connect-timeout 3 https://s3.amazonaws.com/buildpack-exiftool/exiftool-$VERSION.tar.gz -s -o - | tar zxf -
+curl --fail --retry 3 --retry-delay 1 --connect-timeout 3 https://exiftool.org/Image-ExifTool-$VERSION.tar.gz -s -o - | tar zxf -
 
 echo "       Setting PATH"
 cat <<EOF > $BUILD_DIR/.profile.d/buildpack-exiftool.sh
